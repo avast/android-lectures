@@ -7,6 +7,7 @@ import com.avast.example.android.github.model.User;
 
 /**
  * Simple static storage for downloaded data.
+ * Awful thing, but we don't care right now.
  *
  * @author Tomáš Kypta
  */
@@ -14,6 +15,7 @@ public class Storage {
 
     private static User user;
     private static List<Repo> repos;
+    private static List<User> contributors;
 
     public static User getUser() {
         return user;
@@ -29,5 +31,13 @@ public class Storage {
 
     public static void setRepos(List<Repo> repos) {
         Storage.repos = repos;
+    }
+
+    public static List<User> getContributors() {
+        return contributors;
+    }
+
+    public static void setContributors(List<User> contributors) {
+        Storage.contributors = contributors;
     }
 }

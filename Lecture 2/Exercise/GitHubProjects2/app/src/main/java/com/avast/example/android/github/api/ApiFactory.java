@@ -20,6 +20,7 @@ public class ApiFactory {
                     request.addHeader("Accept", "application/vnd.github.v3+json");
                 }
             })
+            .setLogLevel(RestAdapter.LogLevel.FULL)
             .build();
 
         return adapter.create(GitHubApi.class);

@@ -41,7 +41,7 @@
         android:id="@+id/btn_get_repos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/get_detail_better" />
+        android:text="@string/get_user_repositories" />
 
     <TextView
         android:id="@+id/txt_name"
