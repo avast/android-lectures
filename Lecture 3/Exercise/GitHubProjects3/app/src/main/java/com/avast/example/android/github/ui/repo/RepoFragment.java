@@ -1,7 +1,6 @@
 package com.avast.example.android.github.ui.repo;
 
 import java.util.List;
-import javax.inject.Inject;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -16,9 +15,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import com.squareup.picasso.Picasso;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -117,6 +113,9 @@ public class RepoFragment extends Fragment implements LoadAccountDetailsAsyncTas
 
             @Override
             public void failure(RetrofitError error) {
+                if (!isAdded()) {
+                    return;
+                }
                 Snackbar.make(vLlRepo,
                     getActivity().getString(R.string.loading_repos_failed, mAccount.getName()),
                     Snackbar.LENGTH_LONG)
@@ -129,7 +128,6 @@ public class RepoFragment extends Fragment implements LoadAccountDetailsAsyncTas
     @Override
     public void onStop() {
         super.onStop();
-        // TODO task
         if (mLoadAccountDetailsAsyncTask != null) {
             mLoadAccountDetailsAsyncTask.cancel(true);
             mLoadAccountDetailsAsyncTask = null;
@@ -152,10 +150,13 @@ public class RepoFragment extends Fragment implements LoadAccountDetailsAsyncTas
         private List<Repo> mRepos;
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
+            // TODO task 12
             TextView vTextView;
+
             public ViewHolder(View view) {
                 super(view);
-                // TODO task 8
+                // TODO task 12
+                vTextView = (TextView) view.findViewById(R.id.text);
             }
         }
 
@@ -179,7 +180,7 @@ public class RepoFragment extends Fragment implements LoadAccountDetailsAsyncTas
 
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
-            // TODO task 8
+            // TODO task 9
         }
 
     }

@@ -5,9 +5,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-
 import com.avast.example.android.github.R;
 import com.avast.example.android.github.model.Account;
 

@@ -1,9 +1,7 @@
 package com.avast.example.android.github.db;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -14,7 +12,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.squareup.otto.Bus;
 
-import com.avast.example.android.github.event.DbUpdatedEvent;
 import com.avast.example.android.github.model.Account;
 
 /**

@@ -11,7 +11,8 @@ public class DevGitHubApplication extends GitHubApplication {
 
     @Override
     protected AppComponent initAppComponent() {
-        // TODO task 16
-        return null;
+        return DaggerAppComponent.builder()
+            .appModule(new DevAppModule(this))
+            .build();
     }
 }

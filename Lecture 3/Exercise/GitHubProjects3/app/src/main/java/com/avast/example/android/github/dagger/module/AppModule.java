@@ -1,6 +1,5 @@
 package com.avast.example.android.github.dagger.module;
 
-import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import android.content.Context;
@@ -9,10 +8,7 @@ import com.squareup.otto.Bus;
 import com.squareup.otto.ThreadEnforcer;
 import dagger.Module;
 import dagger.Provides;
-import retrofit.RequestInterceptor;
-import retrofit.RestAdapter;
 
-import com.avast.example.android.github.BuildConfig;
 import com.avast.example.android.github.api.GitHubApi;
 
 /**

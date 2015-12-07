@@ -3,8 +3,6 @@ package com.avast.example.android.github.api;
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
 
-import com.avast.example.android.github.BuildConfig;
-
 /**
  * @author Tomáš Kypta (kypta)
  */
@@ -21,7 +19,6 @@ public class ApiFactory {
                     request.addHeader("Accept", "application/vnd.github.v3+json");
                 }
             })
-            // TODO task 14
             .setLogLevel(RestAdapter.LogLevel.BASIC)
             .build();
 

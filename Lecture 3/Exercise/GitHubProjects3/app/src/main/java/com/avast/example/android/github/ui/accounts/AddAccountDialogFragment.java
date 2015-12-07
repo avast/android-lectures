@@ -1,9 +1,7 @@
 package com.avast.example.android.github.ui.accounts;
 
 import java.util.List;
-import javax.inject.Inject;
 
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,13 +10,12 @@ import android.widget.EditText;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-import com.avast.android.dialogs.core.BaseDialogBuilder;
 import com.avast.android.dialogs.fragment.SimpleDialogFragment;
-import com.avast.android.dialogs.iface.IPositiveButtonDialogListener;
 import com.avast.example.android.github.R;
-import com.avast.example.android.github.db.AccountDataSource;
 
 /**
+ * TODO task 3
+ *
  * @author Tomáš Kypta (kypta)
  */
 public class AddAccountDialogFragment extends SimpleDialogFragment {

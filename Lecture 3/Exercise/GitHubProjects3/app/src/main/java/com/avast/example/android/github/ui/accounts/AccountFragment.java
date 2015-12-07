@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,12 +18,10 @@ import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.squareup.otto.Bus;
-import com.squareup.otto.Subscribe;
 
 import com.avast.example.android.github.GitHubApplication;
 import com.avast.example.android.github.R;
 import com.avast.example.android.github.db.AccountDataSource;
-import com.avast.example.android.github.event.DbUpdatedEvent;
 import com.avast.example.android.github.model.Account;
 
 /**
@@ -33,6 +32,7 @@ public class AccountFragment extends Fragment implements LoadAccountsAsyncTask.A
     @Inject
     AccountDataSource mAccountDataSource;
     // TODO task 10
+    Bus mBus;
 
     @Bind(R.id.rv_accounts)
     RecyclerView vRecyclerView;
@@ -71,7 +71,7 @@ public class AccountFragment extends Fragment implements LoadAccountsAsyncTask.A
         vRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getActivity());
         vRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new AccountsRecyclerViewAdapter(mAccountContract);
+        mAdapter = new AccountsRecyclerViewAdapter(mAccountContract, getActivity());
         vRecyclerView.setAdapter(mAdapter);
         // TODO task 5 - start refresh action
     }
@@ -122,10 +122,12 @@ public class AccountFragment extends Fragment implements LoadAccountsAsyncTask.A
 
         private List<Account> mAccounts;
         private AccountContract mAccountContract;
+        private FragmentActivity mActivity;
 
 
-        public AccountsRecyclerViewAdapter(AccountContract accountContract){
+        public AccountsRecyclerViewAdapter(AccountContract accountContract, FragmentActivity activity){
             mAccountContract = accountContract;
+            mActivity = activity;
         }
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -162,6 +164,9 @@ public class AccountFragment extends Fragment implements LoadAccountsAsyncTask.A
                 @Override
                 public void onClick(View v) {
                     mAccountContract.showAccount(account);
+
+                    // TODO task 2
+
                 }
             });
         }

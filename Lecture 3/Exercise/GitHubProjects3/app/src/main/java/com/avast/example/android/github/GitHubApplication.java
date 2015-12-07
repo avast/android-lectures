@@ -6,13 +6,15 @@ import android.os.StrictMode;
 import com.avast.example.android.github.dagger.AppComponent;
 import com.avast.example.android.github.dagger.DaggerAppComponent;
 import com.avast.example.android.github.dagger.module.AppModule;
-import com.avast.example.android.github.db.AccountDataSource;
 
 /**
+ * Application holds app wide data.
+ *
  * @author Tomáš Kypta (kypta)
  */
 public class GitHubApplication extends Application {
 
+    // TODO task 8
     private AppComponent mAppComponent;
 
     @Override
@@ -26,11 +28,13 @@ public class GitHubApplication extends Application {
 
     // way to override in other flavors
     protected AppComponent initAppComponent() {
+        // TODO task 8
         return DaggerAppComponent.builder()
             .appModule(new AppModule(this))
             .build();
     }
 
+    // TODO task 8
     public AppComponent getAppComponent() {
         return mAppComponent;
     }
@@ -38,6 +42,8 @@ public class GitHubApplication extends Application {
     @Override
     public Object getSystemService(String name) {
         // TODO task 7
+
+        // TODO task 8
 
         return super.getSystemService(name);
     }

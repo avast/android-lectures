@@ -1,30 +1,24 @@
 package com.avast.example.android.github.ui.accounts;
 
-import java.util.List;
 import javax.inject.Inject;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.AppCompatDialog;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
+import android.view.View;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 import com.avast.example.android.github.GitHubApplication;
 import com.avast.example.android.github.R;
-import com.avast.example.android.github.dagger.AppComponent;
 import com.avast.example.android.github.db.AccountDataSource;
 import com.avast.example.android.github.model.Account;
 import com.avast.example.android.github.ui.repo.RepoActivity;
@@ -61,10 +55,12 @@ public class AccountActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // TODO task 4
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // TODO task 3
                 AddAccountDialogFragment.show(AccountActivity.this);
             }
         });

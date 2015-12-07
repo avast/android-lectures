@@ -12,14 +12,14 @@ android {
         versionCode 1
         versionName "1.0"
     }
-    // TODO task 16
+    productFlavors {
+        dev
+        vanilla
+    }
     buildTypes {
         debug {
-            // TODO task 15
-            resValue "string", "name", "GitHubProjects3 - Debug"
         }
         release {
-            resValue "string", "name", "GitHubProjects3"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -28,7 +28,6 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    // TODO task 13
 
     testCompile 'junit:junit:4.12'
 

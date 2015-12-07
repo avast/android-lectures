@@ -2,16 +2,13 @@ package com.avast.example.android.github.ui.accounts;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
-
 import javax.inject.Inject;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.os.AsyncTask;
 
 import com.avast.example.android.github.GitHubApplication;
 import com.avast.example.android.github.db.AccountDataSource;
-import com.avast.example.android.github.db.AccountDbHelper;
 import com.avast.example.android.github.model.Account;
 
 /**

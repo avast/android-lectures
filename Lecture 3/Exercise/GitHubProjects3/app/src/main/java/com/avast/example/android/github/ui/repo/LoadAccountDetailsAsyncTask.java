@@ -1,8 +1,6 @@
 package com.avast.example.android.github.ui.repo;
 
 import java.lang.ref.WeakReference;
-import java.util.List;
-import javax.inject.Inject;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -12,8 +10,6 @@ import retrofit.RetrofitError;
 import com.avast.example.android.github.GitHubApplication;
 import com.avast.example.android.github.api.ApiFactory;
 import com.avast.example.android.github.api.GitHubApi;
-import com.avast.example.android.github.db.AccountDataSource;
-import com.avast.example.android.github.model.Account;
 import com.avast.example.android.github.model.User;
 
 /**
