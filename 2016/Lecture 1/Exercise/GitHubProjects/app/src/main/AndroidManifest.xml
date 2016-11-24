@@ -18,10 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--
-        TODO task 4:
-        Show UserListActivity
-         -->
+
+        <activity android:name=".activity.UserListActivity"/>
     </application>
 
 </manifest>

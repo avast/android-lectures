@@ -1,5 +1,7 @@
 package com.avast.example.android.github.activity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -38,6 +40,10 @@ public class UserListActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // TODO task 5
                 // Go back and return result.
+                Intent i = new Intent();
+                i.putExtra(EXTRA_USER, (String)adapter.getItem(position));
+                setResult(Activity.RESULT_OK, i);
+                finish();
             }
         });
     }

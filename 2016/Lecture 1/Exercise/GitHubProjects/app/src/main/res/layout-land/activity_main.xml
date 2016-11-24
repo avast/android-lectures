@@ -2,11 +2,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -15,7 +15,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <EditText
             android:id="@+id/et_user"
@@ -27,8 +27,7 @@
             android:id="@+id/btn_get_user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/choose_user"
-            />
+            android:text="@string/choose_user" />
     </LinearLayout>
 
     <Button
@@ -60,16 +59,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/txt_public_repos"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txt_public_repos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
 
-    <Button
-        android:id="@+id/btn_open_web"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btn_open_web"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Open web page"/>
+    </LinearLayout>
     <!--
     TODO task 11.
     Add button 'Open web' which opens URL of the repo in the browser.
