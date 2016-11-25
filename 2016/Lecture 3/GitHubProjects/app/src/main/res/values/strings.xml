@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GitHub Projects</string>
+    <string name="choose_user">Choose user</string>
+    <string name="show_toast">Show toast</string>
+    <string name="get_detail">Show user detail</string>
+    <string name="get_detail_better">User detail - better</string>
+    <string name="btn_open_web">Open web page</string>
+    <string name="title_user_detail">User detail</string>
+    <string name="btn_download_user">Download user</string>
+    <string name="btn_download_repos">Download repos</string>
+    <string name="btn_open_browser">Open web page</string>
+
+</resources>
