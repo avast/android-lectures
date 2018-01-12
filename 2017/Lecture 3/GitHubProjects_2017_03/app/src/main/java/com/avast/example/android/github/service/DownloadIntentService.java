@@ -44,7 +44,27 @@ public class DownloadIntentService extends IntentService {
             Storage.setRepos(repoList);
             LocalBroadcastManager.getInstance(this).sendBroadcast(new Intent(UserDetailFragment.ACTION_REPOS_DOWNLOADED));
 
-            // TODO 1 show notification when list of repository is downloaded
+            Intent resultIntent = new Intent(this, ReposListActivity.class);
+            TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+
+            stackBuilder.addNextIntentWithParentStack(resultIntent);
+            Intent i = stackBuilder.editIntentAt(1);
+            i.putExtra(UserDetailActivity.EXTRA_USERNAME, username);
+
+            // Gets a PendingIntent containing the entire back stack
+            PendingIntent resultPendingIntent =
+                    stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+
+            Notification notification = new NotificationCompat.Builder(this, "channel")
+                    .setSmallIcon(R.mipmap.ic_launcher)
+                    .setContentTitle("Notification title")
+                    .setContentText("Notification content")
+                    .setContentIntent(resultPendingIntent)
+                    .setAutoCancel(true)
+                    .build();
+
+            NotificationManagerCompat managerCompat = NotificationManagerCompat.from(this);
+            managerCompat.notify(1, notification);
 
             // TODO 2 open activity with repository list when user tap on notification
         } catch (IOException e) {

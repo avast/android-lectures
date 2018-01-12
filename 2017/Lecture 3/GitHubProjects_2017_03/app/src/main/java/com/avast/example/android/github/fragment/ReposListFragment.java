@@ -58,6 +58,27 @@ public class ReposListFragment extends Fragment {
             super(context, resource, textViewResourceId, objects);
         }
 
+        @NonNull
+        @Override
+        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+
+            ViewHolder vh;
+            if (convertView == null) {
+                convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_repo, parent, false);
+                vh = new ViewHolder();
+                vh.vTxtRepoDescription = convertView.findViewById(R.id.txt_repo_description);
+                vh.vTxtRepoName = convertView.findViewById(R.id.txt_repo_name);
+                convertView.setTag(vh);
+            } else {
+                vh = (ViewHolder) convertView.getTag();
+            }
+
+            vh.vTxtRepoName.setText(getItem(position).getName());
+            vh.vTxtRepoDescription.setText(getItem(position).getDescription());
+
+            return convertView;
+        }
+
         private static class ViewHolder {
             TextView vTxtRepoName;
             TextView vTxtRepoDescription;
