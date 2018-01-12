@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Github browser</string>
+    <string name="user_id">User id:</string>
+    <string name="name">Name:</string>
+</resources>
