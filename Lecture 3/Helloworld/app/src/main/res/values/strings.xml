@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Hello world</string>
+    <string name="btn_open_activity">Open second activity</string>
+    <string name="btn_show_toast">Show toast</string>
+</resources>

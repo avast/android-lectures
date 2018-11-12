@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="btn_open_activity">Otevrit "SecondActivity"</string>
+    <string name="app_name">Ahoj svete</string>
+    <string name="btn_show_toast">Zobrazit toast</string>
+</resources>
