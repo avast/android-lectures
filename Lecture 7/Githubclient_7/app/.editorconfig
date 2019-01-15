@@ -1,0 +1,5 @@
+# indicate this is the root of the project
+root = true
+
+[*.{kt}]
+max_line_length = 120

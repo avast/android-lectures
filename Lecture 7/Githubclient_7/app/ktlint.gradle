@@ -1,0 +1,35 @@
+def reporter = 'artifact=me.cassiano:ktlint-html-reporter:0.1.2'
+
+configurations {
+    ktlint
+}
+
+dependencies {
+    ktlint "com.github.shyiko:ktlint:0.29.0"
+    // additional 3rd party ruleset(s) can be specified here
+    // just add them to the classpath (e.g. ktlint 'groupId:artifactId:version') and
+    // ktlint will pick them up
+}
+
+// see https://github.com/shyiko/ktlint#usage for more
+task ktlint(type: JavaExec, group: "verification") {
+    def output = "output=${buildDir}/reports/ktlint-report"
+    description = "Check Kotlin code style."
+    classpath = configurations.ktlint
+    main = "com.github.shyiko.ktlint.Main"
+    args "--color",
+          "--reporter=plain?group_by_file", // console output
+          "--reporter=plain?group_by_file,${output}.txt",
+          "--reporter=html,${reporter},${output}.html",
+          "--android",
+          "src/**/*.kt"
+}
+check.dependsOn ktlint
+
+// Use this task to format code according to style.
+task ktlintFormat(type: JavaExec, group: "formatting") {
+    description = "Fix Kotlin code style deviations."
+    classpath = configurations.ktlint
+    main = "com.github.shyiko.ktlint.Main"
+    args "--format", "--android", "src/**/*.kt"
+}
