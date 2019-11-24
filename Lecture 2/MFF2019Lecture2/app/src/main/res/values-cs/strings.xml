@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MFF 2019 2. přednáška</string>
+    <string name="open_second_screen">Otevřít další obrazovku</string>
+    <string name="enter_url">Vložte URL</string>
+    <string name="first_name">Křestní jméno</string>
+    <string name="kotlin_android_extensions">Kotlin adnroid extensions</string>
+    <string name="label_extension_example">Příklad Extensions</string>
+    <string name="label_open_url">Otevřít URL</string>
+    <string name="last_name">Příjmení</string>
+    <string name="open_url_screen">Zadávání URL</string>
+    <string name="password">Heslo</string>
+    <string name="phone_number">Telefonní číslo</string>
+</resources>

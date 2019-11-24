@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MFF 2019 Lecture 2</string>
+    <string name="open_second_screen">Open second screen</string>
+    <string name="label_extension_example">Extension example</string>
+    <string name="label_open_url">Open URL</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="phone_number">Phone number</string>
+    <string name="password">Password</string>
+    <string name="kotlin_android_extensions">Kotlin android extensions</string>
+    <string name="open_url_screen">Open URL screen</string>
+    <string name="enter_url">Enter Url</string>
+</resources>
