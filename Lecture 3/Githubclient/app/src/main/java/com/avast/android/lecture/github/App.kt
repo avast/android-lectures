@@ -1,6 +1,10 @@
 package com.avast.android.lecture.github
 
 import android.app.Application
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
+import android.os.Build
 import com.facebook.stetho.Stetho
 import com.squareup.leakcanary.LeakCanary
 
@@ -23,6 +27,10 @@ class App: Application() {
      */
     override fun onCreate() {
         super.onCreate()
+        settings.increaseAppLaunchesCount()
+
+        createNotificationChannel()
+        initStetho()
     }
 
     /**
@@ -47,6 +55,13 @@ class App: Application() {
     }
 
     private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(NOTIFICATION_CHANNEL_MAIN_ID, NOTIFICATION_CHANNEL_MAIN_DESCRIPTION, NotificationManager.IMPORTANCE_DEFAULT)
+
+            with(getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager) {
+                createNotificationChannel(channel)
+            }
+        }
     }
 
     companion object {

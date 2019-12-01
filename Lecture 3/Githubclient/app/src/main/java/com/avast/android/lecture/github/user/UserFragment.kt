@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.fragment.app.Fragment
 import com.avast.android.lecture.github.R
 import com.avast.android.lecture.github.data.User
@@ -37,11 +36,16 @@ class UserFragment: Fragment() {
     override fun onStart() {
         super.onStart()
         user = dataRepository.getUser(arguments?.getString(KEY_USERNAME).orEmpty())
-        txt_username_value.text = user?.login
-        txt_url_value.text = user?.html_url
-        txt_followers_value.text = user?.followers_url
-        txt_repositories_value.text = user?.url
-        Glide.with(this).load(user?.avatar_url).into(img_avatar)
+
+
+        user?.run {
+            txt_username_value.text = login
+            txt_url_value.text = html_url
+            txt_followers_value.text = followers_url
+            txt_repositories_value.text = url
+            Glide.with(this@UserFragment).load(avatar_url).into(img_avatar)
+
+        }
     }
 
     /**

@@ -16,19 +16,34 @@ class Settings private constructor(context: Context) {
     /**
      * Get how many times the application was launched.
      */
-    fun getAppLaunchesCount(): Int {
-        return 0
-    }
+    fun getAppLaunchesCount() = preferences.getInt(KEY_APP_LAUNCH_COUNT, 0)
+
 
     /**
      * Increase app launched counter.
      */
     fun increaseAppLaunchesCount() {
+        preferences.edit().putInt(KEY_APP_LAUNCH_COUNT, getAppLaunchesCount() + 1).apply()
+    }
+
+    /**
+     * Read last username from preferences
+     */
+    fun getLastUsername(): String {
+        return preferences.getString(KEY_USERNAME, "").orEmpty()
+    }
+
+    /**
+     * Set username to preferences
+     */
+    fun setLastUsername(username: String) {
+        preferences.edit().putString(KEY_USERNAME, username).apply()
     }
 
     companion object: SingletonHolder<Settings, Context>(::Settings) {
         val APP_PREFERENCES = "github_client"
         val KEY_APP_LAUNCH_COUNT = "app_launches"
+        val KEY_USERNAME = "username"
 
     }
 }
