@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Github client</string>
+    <string name="user_username_label">Username:</string>
+    <string name="user_url_label">URL:</string>
+    <string name="login_username_hint">Username</string>
+    <string name="login_search">Search</string>
+    <string name="user_followers_label">Followers:</string>
+    <string name="user_repositories_label">Repositories:</string>
+
+    <string name="notification_hello_world_title">Login %1$s</string>
+    <string name="notification_hello_world_content">Hello world</string>
+
+    <string name="repository_sort_username">Username</string>
+    <string name="repository_sort_stars">Stars</string>
+
+    <string-array name="repositories_sort">
+        <item>@string/repository_sort_username</item>
+        <item>@string/repository_sort_stars</item>
+    </string-array>
+</resources>
