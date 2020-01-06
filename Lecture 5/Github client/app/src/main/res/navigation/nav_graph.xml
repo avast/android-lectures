@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/loginFragment">
+
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.avast.android.githubclient.lecture5.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.avast.android.githubclient.lecture5.user.UserFragment"
+        android:label="@string/title_user_profile"
+        tools:layout="@layout/fragment_user" >
+        <argument
+            android:name="username"
+            app:argType="string" />
+    </fragment>
+</navigation>
