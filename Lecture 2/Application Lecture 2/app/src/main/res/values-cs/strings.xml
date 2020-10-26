@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Aplikace 2. přednáška</string>
+    <string name="action_settings">Nastavení</string>
+
+    <string name="hint_password">Heslo</string>
+    <string name="hint_username">Uživatelské jméno</string>
+</resources>
