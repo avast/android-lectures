@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Github client</string>
+    <string name="user_username_label">Username:</string>
+    <string name="user_url_label">URL:</string>
+    <string name="login_username_hint">Username</string>
+    <string name="login_search">Search</string>
+    <string name="user_followers_label">Followers:</string>
+    <string name="user_repositories_label">Repositories:</string>
+
+    <string name="notification_hello_world_title">Login %1$s</string>
+    <string name="notification_hello_world_content">Hello world</string>
+</resources>
