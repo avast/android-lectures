@@ -1,6 +1,11 @@
 package com.avast.android.lecture.github
 
 import android.app.Application
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.os.Build
+import android.util.Log
+import androidx.core.app.NotificationManagerCompat
 import com.facebook.flipper.android.AndroidFlipperClient
 import com.facebook.flipper.android.utils.FlipperUtils
 import com.facebook.flipper.plugins.inspector.DescriptorMapping
@@ -17,7 +22,7 @@ import com.facebook.soloader.SoLoader
  */
 class App: Application() {
 
-    val settings: Settings by lazy {
+    private val settings: Settings by lazy {
         Settings.getInstance(this)
     }
 
@@ -30,6 +35,7 @@ class App: Application() {
 
         createNotificationChannel()
         initFlipper()
+        settings.increaseAppLaunchesCount()
     }
 
     /**
@@ -49,13 +55,23 @@ class App: Application() {
     }
 
     private fun createNotificationChannel() {
-
+        Log.d(javaClass.simpleName, "Creating notification channel")
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(
+                NOTIFICATION_CHANNEL_MAIN_ID,
+                NOTIFICATION_CHANNEL_MAIN_DESCRIPTION,
+                NotificationManager.IMPORTANCE_DEFAULT
+            ).apply {
+                description = NOTIFICATION_CHANNEL_MAIN_DESCRIPTION
+            }
+            NotificationManagerCompat.from(this).createNotificationChannel(channel)
+        }
     }
 
     companion object {
-        val NOTIFICATION_CHANNEL_MAIN_ID = "channel_main"
-        val NOTIFICATION_CHANNEL_MAIN_DESCRIPTION = "Login channel"
+        const val NOTIFICATION_CHANNEL_MAIN_ID = "channel_main"
+        const val NOTIFICATION_CHANNEL_MAIN_DESCRIPTION = "Login channel"
 
-        val NOTIFICATION_HELLO_WORLD_ID = 42
+        const val NOTIFICATION_HELLO_WORLD_ID = 42
     }
 }

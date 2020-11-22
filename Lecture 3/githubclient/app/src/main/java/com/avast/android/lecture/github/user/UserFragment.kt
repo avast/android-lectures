@@ -30,14 +30,20 @@ class UserFragment: Fragment() {
      * Inflate view hierarchy to this fragment.
      */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return null
+        return inflater.inflate(R.layout.fragment_user, container, false)
     }
 
     override fun onStart() {
         super.onStart()
         user = dataRepository.getUser(arguments?.getString(KEY_USERNAME).orEmpty())
 
-        // TODO: Exercise 3 Fill user data
+        user?.run {
+            txt_username_value.text = login
+            txt_url_value.text = url
+            txt_followers_value.text = followers.toString()
+            txt_repositories_value.text = public_repos.toString()
+            Glide.with(this@UserFragment).load(avatar_url).into(img_avatar)
+        }
     }
 
     /**
