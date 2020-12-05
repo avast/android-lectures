@@ -39,9 +39,7 @@ class App: Application() {
     }
 
     /**
-     * Initializes stetho library for inspecting share preferences, views etc.
-     *
-     * http://facebook.github.io/stetho/
+     * Initializes [flipper](https://fbflipper.com/) library for inspecting share preferences, views etc.
      */
     private fun initFlipper() {
         SoLoader.init(this, false);

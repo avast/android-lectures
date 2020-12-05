@@ -6,18 +6,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.avast.android.lecture.github.R
 import com.avast.android.lecture.github.data.GithubRepository
 import com.avast.android.lecture.github.data.User
 import com.avast.android.lecture.github.utils.ViewModelResponseState
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_user.*
+import java.util.*
 
 /**
  * Fragment to show user detail.
  */
 class UserFragment: Fragment() {
     private val userViewModel by viewModels<UserViewModel>()
+
+    lateinit var repositoryAdapter: RepositoriesAdapter
 
     /**
      * Inflate view hierarchy to this fragment.
@@ -29,6 +33,11 @@ class UserFragment: Fragment() {
     override fun onStart() {
         super.onStart()
         val username = arguments?.getString(KEY_USERNAME).orEmpty()
+        repositoryAdapter = RepositoriesAdapter(Collections.emptyList())
+
+        rv_repositories.adapter = repositoryAdapter
+        rv_repositories.layoutManager = LinearLayoutManager(requireContext())
+
 
         userViewModel.getUser().observe(viewLifecycleOwner) {
             when (it) {
@@ -52,7 +61,7 @@ class UserFragment: Fragment() {
     }
 
     private fun handleRepositories(repositories: List<GithubRepository>) {
-
+        repositoryAdapter.repositories = repositories
     }
 
     private fun handleError(error: String) {

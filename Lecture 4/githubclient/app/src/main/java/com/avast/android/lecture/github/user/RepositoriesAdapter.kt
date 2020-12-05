@@ -10,6 +10,12 @@ import com.avast.android.lecture.github.data.GithubRepository
 
 class RepositoriesAdapter(repositories: List<GithubRepository>) : RecyclerView.Adapter<RepositoryViewHolder>() {
 
+    var repositories = repositories
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepositoryViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_repository, parent, false)
 
@@ -17,14 +23,14 @@ class RepositoriesAdapter(repositories: List<GithubRepository>) : RecyclerView.A
     }
 
     override fun onBindViewHolder(holder: RepositoryViewHolder, position: Int) {
-
+        holder.bind(repositories[position])
     }
 
-    override fun getItemCount(): Int = 0
+    override fun getItemCount(): Int = repositories.count()
 
 }
 
-class RepositoryViewHolder(view: View): RecyclerView.ViewHolder(view) {
+class RepositoryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     var txtRepositoryName: TextView = view.findViewById(R.id.txt_repository_name)
     var txtRepositoryDescription: TextView = view.findViewById(R.id.txt_repository_description)
