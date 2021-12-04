@@ -9,8 +9,6 @@ import com.avast.android.lecture.github.databinding.ItemRepositoryBinding
 
 class RepositoriesAdapter(repositories: List<GithubRepository>) : RecyclerView.Adapter<RepositoryViewHolder>() {
 
-    //TODO: task
-
     var repositories = repositories
         set(value) {
             field = value
@@ -24,10 +22,10 @@ class RepositoriesAdapter(repositories: List<GithubRepository>) : RecyclerView.A
     }
 
     override fun onBindViewHolder(holder: RepositoryViewHolder, position: Int) {
-
+        holder.bind(repositories[position])
     }
 
-    override fun getItemCount(): Int = 0
+    override fun getItemCount(): Int = repositories.size
 
 }
 

@@ -21,13 +21,9 @@ class UserViewModel: ViewModel() {
         MutableLiveData<ViewModelResponseState<List<GithubRepository>, String>>()
     }
 
-    fun getUser(): LiveData<ViewModelResponseState<User, String>> {
-        return _user
-    }
+    val user: LiveData<ViewModelResponseState<User, String>> = _user
 
-    fun getRepositories(): LiveData<ViewModelResponseState<List<GithubRepository>, String>> {
-        return _repositories
-    }
+    val repositories: LiveData<ViewModelResponseState<List<GithubRepository>, String>> = _repositories
 
     fun loadData(username: String) {
         loadUser(username)
@@ -36,12 +32,18 @@ class UserViewModel: ViewModel() {
 
     // Asynchronous function getting data in background
     private fun loadUser(username: String) {
-        // TODO task
-
+        _user.postValue(ViewModelResponseState.Loading)
+        val user = repository.getUser(username)
+        if (user == null) {
+            _user.postValue(ViewModelResponseState.Idle)
+        } else {
+            _user.postValue(ViewModelResponseState.Success(user))
+        }
     }
 
     private fun loadRepositories(username: String) {
-        // TODO task
-
+        _repositories.postValue(ViewModelResponseState.Loading)
+        val repositories = repository.getUserRepository(username)
+        _repositories.postValue(ViewModelResponseState.Success(repositories))
     }
 }

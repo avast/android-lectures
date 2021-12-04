@@ -6,13 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
-import com.avast.android.lecture.github.Settings
+import androidx.fragment.app.viewModels
 import com.avast.android.lecture.github.databinding.FragmentLoginBinding
 import com.avast.android.lecture.github.user.UserActivity
 import com.avast.android.lecture.github.user.UserFragment
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.launch
 
 /**
  * Login to our application. Offers user to enter username.
@@ -23,9 +20,7 @@ class LoginFragment: Fragment() {
     private val binding: FragmentLoginBinding
         get() = _binding!!
 
-    private val settings: Settings by lazy {
-        Settings(requireContext())
-    }
+    private val loginViewModel by viewModels<LoginViewModel>()
 
     /**
      * Inflate view hierarchy.
@@ -39,22 +34,21 @@ class LoginFragment: Fragment() {
      * Setup view actions.
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        // TODO: task
-        lifecycleScope.launch {
-            binding.txtUsername.editText?.setText(settings.getLastUsername().first())
+        loginViewModel.username.observe(viewLifecycleOwner) {
+            binding.txtUsername.editText?.setText(it)
         }
 
         binding.btnSearch.setOnClickListener {
             val login = binding.txtUsername.editText?.text.toString()
 
-            lifecycleScope.launch {
-                settings.setLastUsername(login)
-            }
+            loginViewModel.storeUsername(login)
             val intent = Intent(activity, UserActivity::class.java)
             intent.putExtra(UserFragment.KEY_USERNAME, login)
 
             startActivity(intent)
         }
+
+        loginViewModel.loadUsername()
     }
 
     override fun onDestroyView() {

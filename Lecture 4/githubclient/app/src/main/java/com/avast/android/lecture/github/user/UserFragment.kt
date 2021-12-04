@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.avast.android.lecture.github.data.GithubRepository
 import com.avast.android.lecture.github.data.User
 import com.avast.android.lecture.github.databinding.FragmentUserBinding
@@ -34,7 +35,7 @@ class UserFragment: Fragment() {
         super.onStart()
         val username = arguments?.getString(KEY_USERNAME).orEmpty()
 
-        userViewModel.getUser().observe(viewLifecycleOwner) {
+        userViewModel.user.observe(viewLifecycleOwner) {
             when (it) {
                 ViewModelResponseState.Idle -> hideLoadingProgress()
                 ViewModelResponseState.Loading -> showLoadingProgress()
@@ -43,11 +44,11 @@ class UserFragment: Fragment() {
             }
         }
 
-        userViewModel.getRepositories().observe(viewLifecycleOwner) {
+        userViewModel.repositories.observe(viewLifecycleOwner) {
             when (it) {
+                is ViewModelResponseState.Error -> handleError(it.error)
                 ViewModelResponseState.Idle -> hideLoadingProgress()
                 ViewModelResponseState.Loading -> showLoadingProgress()
-                is ViewModelResponseState.Error -> handleError(it.error)
                 is ViewModelResponseState.Success -> handleRepositories(it.content)
             }
         }
@@ -56,7 +57,9 @@ class UserFragment: Fragment() {
     }
 
     private fun handleRepositories(repositories: List<GithubRepository>) {
-        // TODO task
+        val adapter = RepositoriesAdapter(repositories)
+        binding.rvRepositories.adapter = adapter
+        binding.rvRepositories.layoutManager = LinearLayoutManager(requireContext())
     }
 
     private fun handleError(error: String) {
