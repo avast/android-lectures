@@ -1,0 +1,45 @@
+import com.github.benmanes.gradle.versions.VersionsPlugin
+
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.6.10'
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.0.4'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlin_version"
+
+        classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:3.0.1'
+        classpath "com.github.ben-manes:gradle-versions-plugin:0.39.0"
+
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+    }
+
+    apply plugin: VersionsPlugin
+
+    // https://github.com/ben-manes/gradle-versions-plugin
+    tasks.named("dependencyUpdates").configure {
+        rejectVersionIf {
+            isNonStable(it.candidate.version)
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
