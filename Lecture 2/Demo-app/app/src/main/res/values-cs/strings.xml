@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Lekce 2</string>
+    <string name="txt_username">Uživatelské jméno</string>
+    <string name="txt_password">Heslo</string>
+    <string name="btn_submit">Odeslat</string>
+    <string name="txt_sample_toast">Toto je ukázkový toast</string>
+    <string name="txt_secondary_activity_text">Uživatelské jméno je: %1$s</string>
+</resources>
