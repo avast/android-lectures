@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Lekce 3</string>
+    <string name="txt_username">Uživatelské jméno</string>
+    <string name="txt_password">Heslo</string>
+    <string name="btn_submit">Odeslat</string>
+</resources>
