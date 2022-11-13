@@ -33,7 +33,12 @@ class UserFragment: Fragment(R.layout.fragment_user) {
     override fun onStart() {
         super.onStart()
         dataRepository.getUser(requireArguments().getString(KEY_USERNAME).orEmpty()).onSuccess {
-
+            binding.cardUser.apply {
+                txtUsernameTitle.text = it.login
+                txtStars.text = it.followers.toString()
+                txtUrl.text = it.html_url
+                Glide.with(this@UserFragment).load(it.avatar_url).into(binding.cardUser.imgAvatar)
+            }
         }.onFailure {
             Toast.makeText(requireContext(), getString(R.string.txt_user_not_found), Toast.LENGTH_LONG).show()
         }
@@ -48,7 +53,11 @@ class UserFragment: Fragment(R.layout.fragment_user) {
         private const val KEY_USERNAME = "username"
 
         fun FragmentManager.addUserFragment(@IdRes containerViewId: Int, username: String) {
-
+            val args = bundleOf(KEY_USERNAME to username)
+            commit {
+                setReorderingAllowed(true)
+                add<UserFragment>(R.id.fragment_container_view, args = args)
+            }
         }
     }
 }

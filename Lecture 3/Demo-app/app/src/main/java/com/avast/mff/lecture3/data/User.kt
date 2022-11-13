@@ -1,6 +1,8 @@
 package com.avast.mff.lecture3.data
 
-
+/**
+ * Github user details.
+ */
 data class User(
     val login: String,
     val id: Int,
