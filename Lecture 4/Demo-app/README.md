@@ -3,3 +3,4 @@
 Example of:
 * Usage of ViewModel/Livedata
 * Adapter views
+  * Item click listeners
