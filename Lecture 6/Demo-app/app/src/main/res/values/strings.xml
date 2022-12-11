@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Lecture 6</string>
+    <string name="txt_username">Username</string>
+    <string name="txt_password">Password</string>
+    <string name="btn_submit">Submit</string>
+    <string name="txt_user_not_found">User doesn\'t exist</string>
+    <string name="network_error">Network error</string>
+    <string name="unknown_error">Unknown error</string>
+    <string name="btn_dismiss">Dismiss</string>
+</resources>
