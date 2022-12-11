@@ -10,7 +10,7 @@ import java.io.IOException
  */
 class InMemoryRepository: Repository {
 
-    override fun getUser(username: String): Result<User> {
+    override suspend fun getUser(username: String): Result<User> {
         val user = when (username) {
             "avast" -> User(
                 login = "avast",
@@ -57,7 +57,7 @@ class InMemoryRepository: Repository {
         return if (user == null) Result.failure(IOException("User not found")) else Result.success(user)
     }
 
-    override fun getUserRepositories(username: String): Result<List<GithubRepository>> {
+    override suspend fun getUserRepositories(username: String): Result<List<GithubRepository>> {
         val user = getUser(username)
         user.onSuccess {
             val repositories = when (username) {
