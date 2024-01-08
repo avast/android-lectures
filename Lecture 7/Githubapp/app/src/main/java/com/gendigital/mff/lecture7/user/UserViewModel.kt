@@ -19,32 +19,23 @@ class UserViewModel: ViewModel() {
         NetworkRepository()
     }
 
-    private val _userDetails: MutableLiveData<ViewModelResponseState<UserData, Int>> =
+    private val _userDetails: MutableLiveData<ViewModelResponseState<UserData>> =
         MutableLiveData(ViewModelResponseState.Idle)
 
-    val userDetails: LiveData<ViewModelResponseState<UserData, Int>>
+    val userDetails: LiveData<ViewModelResponseState<UserData>>
         get() = _userDetails
 
     fun loadUserDetails(username: String) {
         viewModelScope.launch(Dispatchers.IO) {
             val user = dataRepository.getUser(username)
-            user.onSuccess { userDetail ->
-                val repositories = dataRepository.getUserRepository(userDetail.login)
-                repositories.onSuccess { repositoryList ->
-                    _userDetails.postValue(ViewModelResponseState.Success(UserData(userDetail, repositoryList)))
-                }.onFailure {
-                    _userDetails.postValue(ViewModelResponseState.Error(it.getErrorCode()))
-                }
+            val repositories = if (user != null) dataRepository.getUserRepository(username) else null
 
-            }.onFailure {
-                _userDetails.postValue(ViewModelResponseState.Error(it.getErrorCode()))
+            if (user != null && repositories != null) {
+                _userDetails.postValue(ViewModelResponseState.Success(UserData(user, repositories)))
+            } else {
+                _userDetails.postValue(ViewModelResponseState.Error)
             }
         }
-    }
-
-    private fun Throwable.getErrorCode(): Int = when (this) {
-        is IOException -> 404
-        else -> 500
     }
 }
 

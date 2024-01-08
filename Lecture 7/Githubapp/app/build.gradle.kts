@@ -2,7 +2,7 @@ import java.util.Properties
 import java.io.FileInputStream
 
 plugins {
-    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
     kotlin("plugin.serialization").version("1.9.10")
@@ -67,6 +67,7 @@ android {
 }
 
 dependencies {
+    implementation(projects.shared)
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.constraintlayout)
@@ -97,5 +98,5 @@ dependencies {
 
     // Data store
     implementation(libs.androidx.datastore)
-    implementation(libs.kotlinx.serialization.json)
+
 }

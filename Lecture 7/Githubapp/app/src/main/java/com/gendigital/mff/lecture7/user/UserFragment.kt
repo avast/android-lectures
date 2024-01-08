@@ -48,7 +48,7 @@ class UserFragment: Fragment(R.layout.fragment_user) {
 
     }
 
-    private fun handleError(errorCode: Int) {
+    private fun handleError() {
         // TODO: implement error handling i.e. show snackbar
     }
 
@@ -61,7 +61,7 @@ class UserFragment: Fragment(R.layout.fragment_user) {
         viewModel.userDetails.observe(viewLifecycleOwner) {
             when (it) {
                 is ViewModelResponseState.Success -> handleUser(it.content)
-                is ViewModelResponseState.Error -> handleError(it.error)
+                is ViewModelResponseState.Error -> handleError()
                 ViewModelResponseState.Idle -> Unit //noting
                 ViewModelResponseState.Loading -> showProgress()
             }
