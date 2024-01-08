@@ -8,6 +8,7 @@
 
 import SwiftUI
 import shared
+import os
 
 struct UserScreen: View {
     
@@ -23,7 +24,7 @@ struct UserScreen: View {
                 user = try await repository.getUser(username: username)
                 repositories = try await repository.getUserRepository(username: username)
             } catch {
-                
+                os_log("Missing data", type: .error)
             }
         }
     }
