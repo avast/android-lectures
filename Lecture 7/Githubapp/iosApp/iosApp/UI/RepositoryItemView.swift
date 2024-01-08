@@ -9,7 +9,7 @@
 import SwiftUI
 import shared
 
-struct RepositoryView: View {
+struct RepositoryItemView: View {
     var repository: GithubRepository
     
     var body: some View {
@@ -23,5 +23,5 @@ struct RepositoryView: View {
 }
 
 #Preview {
-    RepositoryView(repository: InMemoryRepository.companion.AvastRepositories[0])
+    RepositoryItemView(repository: InMemoryRepository.companion.AvastRepositories[0])
 }

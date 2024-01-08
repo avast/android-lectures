@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		050429102B497AA1009A1E20 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0504290F2B497AA1009A1E20 /* UserView.swift */; };
-		050429122B49A232009A1E20 /* RepositoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050429112B49A232009A1E20 /* RepositoryView.swift */; };
+		050429122B49A232009A1E20 /* RepositoryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050429112B49A232009A1E20 /* RepositoryItemView.swift */; };
 		050429142B49A5BC009A1E20 /* UserScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050429132B49A5BC009A1E20 /* UserScreen.swift */; };
 		050429292B4A0D25009A1E20 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050429282B4A0D25009A1E20 /* SearchView.swift */; };
 		058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557BA273AAA24004C7B11 /* Assets.xcassets */; };
@@ -34,7 +34,7 @@
 
 /* Begin PBXFileReference section */
 		0504290F2B497AA1009A1E20 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
-		050429112B49A232009A1E20 /* RepositoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryView.swift; sourceTree = "<group>"; };
+		050429112B49A232009A1E20 /* RepositoryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryItemView.swift; sourceTree = "<group>"; };
 		050429132B49A5BC009A1E20 /* UserScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserScreen.swift; sourceTree = "<group>"; };
 		050429282B4A0D25009A1E20 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		058557BA273AAA24004C7B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -62,7 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				0504290F2B497AA1009A1E20 /* UserView.swift */,
-				050429112B49A232009A1E20 /* RepositoryView.swift */,
+				050429112B49A232009A1E20 /* RepositoryItemView.swift */,
 				050429132B49A5BC009A1E20 /* UserScreen.swift */,
 				050429282B4A0D25009A1E20 /* SearchView.swift */,
 				05CC8B2D2B4B3F730041A72D /* RepositoryScreenView.swift */,
@@ -215,7 +215,7 @@
 				050429292B4A0D25009A1E20 /* SearchView.swift in Sources */,
 				05CC8B2E2B4B3F730041A72D /* RepositoryScreenView.swift in Sources */,
 				050429102B497AA1009A1E20 /* UserView.swift in Sources */,
-				050429122B49A232009A1E20 /* RepositoryView.swift in Sources */,
+				050429122B49A232009A1E20 /* RepositoryItemView.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

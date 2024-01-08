@@ -46,7 +46,7 @@ struct UserScreen: View {
                     NavigationLink{
                         RepositoryScreenView(repository: repository)
                     } label: {
-                        RepositoryView(repository: repository)
+                        RepositoryItemView(repository: repository)
                     }
                 }.background(.red)
             }
