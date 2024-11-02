@@ -24,6 +24,12 @@ class ProfileViewModel :  ViewModel() {
         get() = _userDetails
 
     fun loadUserDetails(username: String) {
+        if (_userDetails.value !is ViewModelResponseState.Idle) {
+            return
+        }
+
+        _userDetails.value = ViewModelResponseState.Loading
+
         val user = dataRepository.getUser(username)
 
         user.onSuccess {

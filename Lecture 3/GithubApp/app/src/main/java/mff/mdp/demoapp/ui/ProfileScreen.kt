@@ -1,5 +1,6 @@
 package mff.mdp.demoapp.ui
 
+import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -26,6 +27,7 @@ fun ProfileScreen(
     viewModel: ProfileViewModel
 ) {
     LaunchedEffect(name) {
+        Log.d("ProfileScreen", "Loading user details for $name")
         viewModel.loadUserDetails(name)
     }
 
