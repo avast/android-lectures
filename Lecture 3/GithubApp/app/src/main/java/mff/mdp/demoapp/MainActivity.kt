@@ -20,7 +20,7 @@ import androidx.navigation.toRoute
 import kotlinx.serialization.Serializable
 import mff.mdp.demoapp.ui.HomeScreen
 import mff.mdp.demoapp.ui.ProfileScreen
-import mff.mdp.demoapp.ui.theme.DemoAppTheme
+import mff.mdp.demoapp.ui.theme.GithubAppTheme
 import mff.mdp.demoapp.viewmodels.ProfileViewModel
 
 class MainActivity : ComponentActivity() {
@@ -30,17 +30,18 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            DemoAppTheme {
+            GithubAppTheme {
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
                     topBar = {
                         TopAppBar(title = { Text(text = getString(R.string.app_name)) })
+                    },
+                    content = { innerPadding ->
+                        Main(
+                            modifier = Modifier.padding(innerPadding)
+                        )
                     }
-                ) { innerPadding ->
-                    Main(
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                )
             }
         }
     }

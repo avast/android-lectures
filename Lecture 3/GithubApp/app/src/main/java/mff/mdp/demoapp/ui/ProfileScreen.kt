@@ -18,6 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import mff.mdp.demoapp.R
+import mff.mdp.demoapp.data.User
 import mff.mdp.demoapp.viewmodels.ProfileViewModel
 import mff.mdp.demoapp.viewmodels.ViewModelResponseState
 
@@ -37,11 +38,7 @@ fun ProfileScreen(
         when (val userState = userDetailState) {
             is ViewModelResponseState.Idle -> Unit // Do nothing here
             is ViewModelResponseState.Success ->
-                UserCard(
-                    name = userState.content.login,
-                    url = userState.content.html_url,
-                    imageUrl = userState.content.avatar_url
-                )
+                UserCard(user = userState.content)
 
             is ViewModelResponseState.Error ->
                 Text(
@@ -57,6 +54,16 @@ fun ProfileScreen(
                 CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
         }
     }
+}
+
+@Composable
+fun UserCard(user: User, modifier: Modifier = Modifier) {
+    UserCard(
+        name = user.login,
+        url = user.html_url,
+        imageUrl = user.avatar_url,
+        modifier = modifier
+    )
 }
 
 @Preview(showBackground = true)
