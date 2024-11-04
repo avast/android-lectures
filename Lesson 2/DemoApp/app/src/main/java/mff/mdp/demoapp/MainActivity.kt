@@ -33,12 +33,13 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     topBar = {
                         TopAppBar(title = { Text(text = getString(R.string.app_name)) })
+                    },
+                    content = { innerPadding ->
+                        Main(
+                            modifier = Modifier.padding(innerPadding)
+                        )
                     }
-                ) { innerPadding ->
-                    Main(
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                )
             }
         }
     }

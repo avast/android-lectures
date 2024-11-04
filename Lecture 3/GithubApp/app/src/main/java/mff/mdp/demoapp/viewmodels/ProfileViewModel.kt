@@ -1,5 +1,6 @@
 package mff.mdp.demoapp.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -27,6 +28,8 @@ class ProfileViewModel :  ViewModel() {
         if (_userDetails.value !is ViewModelResponseState.Idle) {
             return
         }
+
+        Log.d("ProfileViewModel", "Loading user details for $username")
 
         _userDetails.value = ViewModelResponseState.Loading
 

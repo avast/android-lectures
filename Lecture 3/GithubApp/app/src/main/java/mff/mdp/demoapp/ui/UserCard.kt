@@ -1,6 +1,7 @@
 package mff.mdp.demoapp.ui
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.net.Uri
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -25,6 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import mff.mdp.demoapp.R
+import mff.mdp.demoapp.ui.theme.GithubAppTheme
 
 @Composable
 fun UserCard(
@@ -43,7 +45,8 @@ fun UserCard(
     ) {
         Column {
             Row(
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
                     .padding(16.dp)
             ) {
 
@@ -85,12 +88,21 @@ fun UserCard(
     }
 }
 
-@Preview(showBackground = true)
+@Preview(
+    showBackground = true,
+    uiMode = Configuration.UI_MODE_NIGHT_NO
+)
+@Preview(
+    showBackground = true,
+    uiMode = Configuration.UI_MODE_NIGHT_YES
+)
 @Composable
 fun UserCardPreview() {
-    UserCard(
-        "Android",
-        "https://developer.android.com",
-        "https://cdn.iconscout.com/icon/free/png-256/free-android-logo-icon-download-in-svg-png-gif-file-formats--wordmark-programming-langugae-language-pack-logos-icons-1175276.png?f=webp&w=256"
-    )
+    GithubAppTheme {
+        UserCard(
+            "Android",
+            "https://developer.android.com",
+            "https://cdn.iconscout.com/icon/free/png-256/free-android-logo-icon-download-in-svg-png-gif-file-formats--wordmark-programming-langugae-language-pack-logos-icons-1175276.png?f=webp&w=256"
+        )
+    }
 }

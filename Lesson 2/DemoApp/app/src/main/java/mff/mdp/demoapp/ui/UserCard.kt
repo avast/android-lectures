@@ -1,6 +1,7 @@
 package mff.mdp.demoapp.ui
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.net.Uri
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
@@ -25,6 +26,7 @@ import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import mff.mdp.demoapp.R
+import mff.mdp.demoapp.ui.theme.DemoAppTheme
 
 @Composable
 fun UserCard(
@@ -77,12 +79,21 @@ fun UserCard(
     }
 }
 
-@Preview(showBackground = true)
+@Preview(
+    showBackground = true,
+    uiMode = Configuration.UI_MODE_NIGHT_NO
+)
+@Preview(
+    showBackground = true,
+    uiMode = Configuration.UI_MODE_NIGHT_YES
+)
 @Composable
 fun UserCardPreview() {
-    UserCard(
-        "Android",
-        "https://developer.android.com",
-        R.drawable.ic_launcher_foreground
-    )
+    DemoAppTheme {
+        UserCard(
+            "Android",
+            "https://developer.android.com",
+            R.drawable.ic_launcher_foreground
+        )
+    }
 }
