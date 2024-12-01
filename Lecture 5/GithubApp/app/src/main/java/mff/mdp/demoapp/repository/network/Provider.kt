@@ -1,7 +1,5 @@
 package mff.mdp.demoapp.repository.network
 
-import com.facebook.flipper.plugins.network.FlipperOkhttpInterceptor
-import com.facebook.flipper.plugins.network.NetworkFlipperPlugin
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.okhttp.OkHttp
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
@@ -12,6 +10,7 @@ import io.ktor.http.URLProtocol
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import mff.mdp.demoapp.BuildConfig
+import mff.mdp.demoapp.DebugOptionsImpl.addFlipperInterceptor
 import okhttp3.logging.HttpLoggingInterceptor
 
 object Provider {
@@ -31,7 +30,7 @@ object Provider {
                     addInterceptor(HttpLoggingInterceptor().apply {
                         level = HttpLoggingInterceptor.Level.BODY
                     })
-                    addNetworkInterceptor(FlipperOkhttpInterceptor(networkFlipperPlugin));
+                    addFlipperInterceptor()
                 }
 
             }
@@ -46,7 +45,6 @@ object Provider {
         }
     }
 
-    val networkFlipperPlugin by lazy { NetworkFlipperPlugin() }
 }
 
 private const val HOST: String = "api.github.com"
