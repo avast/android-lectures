@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Github App</string>
+    <string name="home_screen_title">Welcome!</string>
+    <string name="search_user_prompt">Search username</string>
+    <string name="go_to_profile">Go to profile</string>
+    <string name="profile_error_message">Sorry, we have encountered an error (%1$s)</string>
+    <string name="repositories_header">Repositories</string>
+</resources>
